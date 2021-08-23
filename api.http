@@ -1,0 +1,31 @@
+# Stock POST request
+POST https://localhost:5001/api/v1/stock
+Content-Type: application/json
+
+{
+    "20000": 10,
+    "10000": 15,
+    "5000": 10,
+    "1000": 20,
+    "500": 20
+}
+
+###
+
+# Get current inventory
+GET https://localhost:5001/api/v1/stock
+
+###
+
+# Checkout
+
+POST https://localhost:5001/api/v1/checkout
+Content-Type: application/json
+
+{
+    "inserted": {
+        "1000": 2,
+        "500": 1
+    },
+    "price": 2400
+}
