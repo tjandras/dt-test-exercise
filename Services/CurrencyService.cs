@@ -37,7 +37,7 @@ namespace digitalthinkers.Services
 
             if (currencyToUpdate.Any())
             {
-                await AddNewCurrencies(currencyUpdateData, currentStock, currencyToUpdate);
+                await AddNewCurrenciesAsync(currencyUpdateData, currentStock, currencyToUpdate);
             }
 
             await dbContext.SaveChangesAsync();
@@ -47,7 +47,7 @@ namespace digitalthinkers.Services
             return ConvertCurrencyToDto(currentStock);
         }
 
-        private async Task AddNewCurrencies(Dictionary<int, int> currencyUpdateData, List<Currency> currentStock, List<int> currencyToUpdate)
+        private async Task AddNewCurrenciesAsync(Dictionary<int, int> currencyUpdateData, List<Currency> currentStock, List<int> currencyToUpdate)
         {
             foreach (int bill in currencyToUpdate)
             {
@@ -79,7 +79,7 @@ namespace digitalthinkers.Services
         private void LogChanges(Dictionary<int, int> currencyUpdateData)
         {
             var updateResult = String.Join(", ", currencyUpdateData.Select(c => $"{c.Value} pcs of {c.Key}").ToArray());
-            logger.LogInformation($"The following bills and coind were loaded into the machine: {updateResult}.");
+            logger.LogInformation($"The following bills and coind were loaded into/payed out from the machine: {updateResult}.");
         }
     }
 }

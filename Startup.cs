@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mime;
 using System.Threading.Tasks;
 using digitalthinkers.Database;
 using digitalthinkers.Interfaces;
@@ -31,6 +32,7 @@ namespace digitalthinkers
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<ICurrencyService, CurrencyService>();
+            services.AddScoped<ICheckoutService, CheckoutService>();
 
             services.AddControllers();
 
