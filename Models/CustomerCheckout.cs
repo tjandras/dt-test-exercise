@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace digitalthinkers.Controllers
+namespace digitalthinkers.Models
 {
     public class CustomerCheckout
     {
