@@ -54,6 +54,8 @@ namespace digitalthinkers
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "digitalthinkers v1"));
             }
 
+            app.UseExceptionHandler("/errors");
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
