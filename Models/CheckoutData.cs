@@ -9,6 +9,8 @@ namespace digitalthinkers.Models
             Change = new Dictionary<int, int>();
         }
 
+        public Dictionary<int, int> Inserted { get; set; }
+
         public double InsertedAmount { get; set; }
 
         public bool IsValid { get; set; }
