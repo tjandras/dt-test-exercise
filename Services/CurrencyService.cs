@@ -40,7 +40,19 @@ namespace digitalthinkers.Services
                 await AddNewCurrenciesAsync(currencyUpdateData, currentStock, currencyToUpdate);
             }
 
-            await dbContext.SaveChangesAsync();
+            dbContext.Database.OpenConnection();
+            try
+            {
+                dbContext.Database.ExecuteSqlInterpolated($"SET IDENTITY_INSERT dbo.Currencies ON");
+                dbContext.SaveChanges();
+                dbContext.Database.ExecuteSqlInterpolated($"SET IDENTITY_INSERT dbo.Currencies OFF");
+            }
+            finally
+            {
+                dbContext.Database.CloseConnection();
+            }
+
+            // await dbContext.SaveChangesAsync();
 
             LogChanges(currencyUpdateData);
 

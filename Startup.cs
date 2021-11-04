@@ -36,7 +36,8 @@ namespace digitalthinkers
 
             services.AddControllers();
 
-            services.AddDbContext<CurrencyContext>(opt => opt.UseInMemoryDatabase("Currency"));
+            var sqlConn = @"Server=localhost;Database=dt;user id=sa;password=Almafa1234";
+            services.AddDbContext<CurrencyContext>(opt => opt.UseSqlServer(sqlConn));
 
             services.AddSwaggerGen(c =>
             {
